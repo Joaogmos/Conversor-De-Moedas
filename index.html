@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Dinheiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Real para Outras Moedas</h1>
+        <p><strong>Cotações atuais:</strong></p>
+        <ul>
+            <li>Dólar: R$ 5,80</li>
+            <li>Peso Argentino: R$ 0,0060</li>
+            <li>Yuan Chinês: R$ 0,80</li>
+            <li>Euro: R$ 6,03</li>
+            <li>Libra: R$ 7,27</li>
+            <li>Iene: R$ 0,039</li>
+            <li>Bitcoin: R$ 567.035,00</li>
+        </ul>
+        <input type="number" id="valor" placeholder="Digite o valor em reais" step="0.01">
+        
+        <!-- Dropdown para escolher a moeda -->
+        <select id="moedaEscolhida">
+            <option value="dolar">Dólar (USD)</option>
+            <option value="peso">Peso Argentino (ARS)</option>
+            <option value="yuan">Yuan Chinês (CNY)</option>
+            <option value="euro">Euro (EUR)</option>
+            <option value="libra">Libra Esterlina (GBP)</option>
+            <option value="iene">Iene Japonês (JPY)</option>
+            <option value="bitcoin">Bitcoin (BTC)</option>
+        </select>
+
+        <button onclick="converter()">Converter</button>
+        <p id="resultado"></p>
+        <p class="atualizacao">(Cotações atualizadas em 25 de novembro de 2024)</p>
+    </div>
+
+    <footer>
+        <p>Feito por João Guilherme Messias de Oliveira Santos. <br> Veja mais no meu <a href="https://github.com/" target="_blank">GitHub</a>.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
