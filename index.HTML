@@ -36,7 +36,7 @@
         ul li {
             margin: 5px 0;
         }
-        input, select {
+        input {
             margin: 10px 0;
             padding: 10px;
             font-size: 16px;
@@ -94,65 +94,54 @@
             <li>Peso Argentino: R$ 0,0060</li>
             <li>Yuan Chinês: R$ 0,80</li>
             <li>Euro: R$ 6,03</li>
-            <li>Libra Esterlina: R$ 7,27</li>
-            <li>Iene Japonês: R$ 0,039</li>
+            <li>Libra: R$ 7,27</li>
+            <li>Iene: R$ 0,039</li>
             <li>Bitcoin: R$ 567.035,00</li>
         </ul>
         <input type="number" id="valor" placeholder="Digite o valor em reais" step="0.01">
-        <select id="moeda">
-            <option value="dolar">Dólar Americano (USD)</option>
-            <option value="euro">Euro (EUR)</option>
-            <option value="libra">Libra Esterlina (GBP)</option>
-            <option value="iene">Iene Japonês (JPY)</option>
-            <option value="peso">Peso Argentino (ARS)</option>
-            <option value="yuan">Yuan Chinês (CNY)</option>
-            <option value="bitcoin">Bitcoin (BTC)</option>
-        </select>
-        <button onclick="converter()">Converter</button>
+        <button onclick="converterTudo()">Converter</button>
         <p id="resultado"></p>
-        <p class="atualizacao">(Cotações atualizadas em 25 de novembro de 2024 de acordo com o Google finanças)</p>
+        <p class="atualizacao">(Cotações atualizadas em 25 de novembro de 2024)</p>
     </div>
 
     <footer>
-        <p>Feito por João Guilherme Messias de Oliveira Santos. <br> Veja mais no meu <a href="https://github.com/Joaogmos" target="_blank">GitHub</a>.</p>
+        <p>Feito por João Guilherme Messias de Oliveira Santos. <br> Veja mais no meu <a href="https://github.com/" target="_blank">GitHub</a>.</p>
     </footer>
 
     <script>
         const cotacaoDolar = 5.80;
+        const cotacaoPeso = 0.0060;
+        const cotacaoYuan = 0.80;
         const cotacaoEuro = 6.03;
         const cotacaoLibra = 7.27;
         const cotacaoIene = 0.039;
-        const cotacaoPeso = 0.0060;
-        const cotacaoYuan = 0.80;
-        const cotacaoBitcoin = 567035.00; 
+        const cotacaoBitcoin = 567035.00;
 
-        function converter() {
+        function converterTudo() {
             const valorReal = parseFloat(document.getElementById('valor').value);
-            const moedaSelecionada = document.getElementById('moeda').value;
-
             if (isNaN(valorReal) || valorReal <= 0) {
                 alert('Por favor, insira um valor válido maior que zero.');
                 return;
             }
 
-            let resultado;
-            if (moedaSelecionada === 'dolar') {
-                resultado = (valorReal / cotacaoDolar).toFixed(2) + ' dólares';
-            } else if (moedaSelecionada === 'euro') {
-                resultado = (valorReal / cotacaoEuro).toFixed(2) + ' euros';
-            } else if (moedaSelecionada === 'libra') {
-                resultado = (valorReal / cotacaoLibra).toFixed(2) + ' libras esterlinas';
-            } else if (moedaSelecionada === 'iene') {
-                resultado = (valorReal / cotacaoIene).toFixed(2) + ' ienes japoneses';
-            } else if (moedaSelecionada === 'peso') {
-                resultado = (valorReal / cotacaoPeso).toFixed(2) + ' pesos argentinos';
-            } else if (moedaSelecionada === 'yuan') {
-                resultado = (valorReal / cotacaoYuan).toFixed(2) + ' yuans chineses';
-            } else if (moedaSelecionada === 'bitcoin') {
-                resultado = (valorReal / cotacaoBitcoin).toFixed(8) + ' BTC'; 
-            }
+            const valorDolar = (valorReal / cotacaoDolar).toFixed(2);
+            const valorPeso = (valorReal / cotacaoPeso).toFixed(2);
+            const valorYuan = (valorReal / cotacaoYuan).toFixed(2);
+            const valorEuro = (valorReal / cotacaoEuro).toFixed(2);
+            const valorLibra = (valorReal / cotacaoLibra).toFixed(2);
+            const valorIene = (valorReal / cotacaoIene).toFixed(2);
+            const valorBitcoin = (valorReal / cotacaoBitcoin).toFixed(6);
 
-            document.getElementById('resultado').innerHTML = `R$ ${valorReal.toFixed(2)} equivalem a:<br> ${resultado}`;
+            document.getElementById('resultado').innerHTML = `
+                R$ ${valorReal.toFixed(2)} equivalem a:<br>
+                - $ ${valorDolar} dólares<br>
+                - ${valorPeso} pesos argentinos<br>
+                - ¥ ${valorYuan} yuans chineses<br>
+                - € ${valorEuro} euros<br>
+                - £ ${valorLibra} libras esterlinas<br>
+                - ¥ ${valorIene} ienes japoneses<br>
+                - ฿ ${valorBitcoin} bitcoins
+            `;
         }
     </script>
 </body>
